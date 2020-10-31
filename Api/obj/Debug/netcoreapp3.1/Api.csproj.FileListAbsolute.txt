@@ -20,7 +20,14 @@ C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\Microsoft.OpenApi
 C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\User\source\repos\Bliblia\Api\obj\Debug\netcoreapp3.1\Api.csproj.CopyComplete
+C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\User\source\repos\Bliblia\Api\bin\Debug\netcoreapp3.1\Dapper.dll
 C:\Users\User\source\repos\Bliblia\Api\obj\Debug\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\Bliblia\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\User\source\repos\Bliblia\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\User\source\repos\Bliblia\Api\obj\Debug\netcoreapp3.1\Api.csproj.CopyComplete

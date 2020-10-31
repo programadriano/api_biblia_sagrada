@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Entidades.Servicos;
+using Api.Infra;
+using Api.Servicos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +29,15 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.Configure<Configuracoes>(Options =>
+            {
+                Options.ConnectionString = Configuration.GetSection("Connection:String").Value;
+            });
+
+            #region [Injeção de dependencia]
+            services.AddTransient<ILivroService, LivroService>();
+            #endregion
 
             #region [cors]
             services.AddCors();
