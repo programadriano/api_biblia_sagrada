@@ -23,7 +23,12 @@ namespace Api.Controllers
 
         }
 
-
+        /// <summary>
+        /// Retorna  versiculo de um capitulo
+        /// </summary>
+        /// <param name="sigla"></param>   
+        /// <param name="capitulo"></param>   
+        /// <param name="versiculo"></param>   
         [HttpGet("{sigla}/{capitulo}/{versiculo}")]
         public IActionResult Get(string sigla, int capitulo, int versiculo)
         {
@@ -40,6 +45,12 @@ namespace Api.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Retorna  capitulo de um livro
+        /// </summary>
+        /// <param name="sigla"></param>   
+        /// <param name="capitulo"></param>   
         [HttpGet("{sigla}/{capitulo}")]
         public IActionResult Get(string sigla, int capitulo)
         {
@@ -56,6 +67,9 @@ namespace Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna  todos livros do novo e do velho testamento
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
