@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Api.Models
 {
-    public class Capitulos
+    public class CapituloViewModel
     {
-        public string Sigla { get; set; }
-        public int Quantidade { get; set; }
+        public int Versiculo { get; set; }
+        public string Texto { get; set; }
     }
 }

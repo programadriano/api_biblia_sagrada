@@ -24,31 +24,35 @@ namespace Api.Servicos
 
         }
 
-        public IEnumerable<Capitulos> BuscarCapitulos(int livroId)
+        public IEnumerable<Verso> BuscarVersosPorSiglaCapituloEVersiculo(string sigla, int capitulo, int versiculo)
         {
             var conexao = new SqlConnection(_connectionString);
             conexao.Open();
-            var query = $@"select Sigla, Capitulos as 'Quantidade' from Livro where id = {livroId}";
-            var capitulos = conexao.Query<Capitulos>(query).ToList();
+            var query = $@"select v.Versiculo, v.Texto from Livro l inner join Versos v on v.LivroId = l.Id where l.Sigla = '{sigla}' and Capitulo = {capitulo} and v.Versiculo = {versiculo}";
+
+            var livros = conexao.Query<Verso>(query).ToList();
             conexao.Close();
 
-            return capitulos;
+            return livros;
         }
 
-        public IEnumerable<Livro> BuscarTodosLivros(int page, int qtd, Testamento testamento)
+        public IEnumerable<Verso> BuscarVersosPorSiglaECapitulo(string sigla, int capitulo)
         {
             var conexao = new SqlConnection(_connectionString);
             conexao.Open();
-            var query = "";
+            var query = $@"select v.Versiculo, v.Texto from Livro l inner join Versos v on v.LivroId = l.Id where l.Sigla = '{sigla}' and v.Capitulo = {capitulo}";
 
-            if (testamento == Testamento.NovoEVelho)
-            {
-                query = $@"SELECT * FROM [db_blible_dev].[dbo].[Livro]  order by id OFFSET {page * qtd} ROWS FETCH NEXT {qtd} ROWS ONLY";
-            }
-            else
-            {
-                query = $@"SELECT * FROM [db_blible_dev].[dbo].[Livro] where Testamento = {(int)testamento}  order by id OFFSET {page * qtd} ROWS FETCH NEXT {qtd} ROWS ONLY";
-            }
+            var livros = conexao.Query<Verso>(query).ToList();
+            conexao.Close();
+
+            return livros;
+        }
+
+        public IEnumerable<Livro> ListarLivros()
+        {
+            var conexao = new SqlConnection(_connectionString);
+            conexao.Open();
+            var query = "SELECT Capitulos,Nome,Sigla,Testamento FROM Livro";
 
             var livros = conexao.Query<Livro>(query).ToList();
             conexao.Close();

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Api.Entidades.Servicos;
 using Api.Infra;
 using Api.Servicos;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +54,10 @@ namespace Api
                 });
 
             });
+            #endregion
+
+            #region [AutoMaper]            
+            services.AddAutoMapper(typeof(Startup));
             #endregion
         }
 

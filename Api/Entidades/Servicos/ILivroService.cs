@@ -9,8 +9,8 @@ namespace Api.Entidades.Servicos
 {
     public interface ILivroService
     {
-        IEnumerable<Livro> BuscarTodosLivros(int page, int qtd, Testamento testamento);
-
-        IEnumerable<Capitulos> BuscarCapitulos(int livroId);
+        IEnumerable<Livro> ListarLivros();
+        IEnumerable<Verso> BuscarVersosPorSiglaECapitulo(string sigla, int capitulo);
+        IEnumerable<Verso> BuscarVersosPorSiglaCapituloEVersiculo(string sigla, int capitulo, int versiculo);
     }
 }

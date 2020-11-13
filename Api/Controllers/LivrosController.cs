@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Api.Entidades;
 using Api.Entidades.Enums;
 using Api.Entidades.Servicos;
+using Api.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Api.Controllers
 {
@@ -15,18 +14,24 @@ namespace Api.Controllers
     public class LivrosController : ControllerBase
     {
         private ILivroService _service;
+        private readonly IMapper _mapper;
 
-        public LivrosController(ILivroService service)
+        public LivrosController(ILivroService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
+
         }
 
-        [HttpGet("{page}/{qtd}/{testamento}")]
-        public IActionResult Get(int page, int qtd, Testamento testamento)
+
+        [HttpGet("{sigla}/{capitulo}/{versiculo}")]
+        public IActionResult Get(string sigla, int capitulo, int versiculo)
         {
             try
             {
-                return Ok(_service.BuscarTodosLivros(page, qtd, testamento));
+                var domain = _service.BuscarVersosPorSiglaCapituloEVersiculo(sigla, capitulo, versiculo);
+                var vm = _mapper.Map<IEnumerable<Verso>, IEnumerable<CapituloViewModel>>(domain);
+                return Ok(vm);
             }
             catch (Exception ex)
             {
@@ -35,12 +40,30 @@ namespace Api.Controllers
             }
         }
 
-        [HttpGet("{livroId}")]
-        public IActionResult Get(int livroId)
+        [HttpGet("{sigla}/{capitulo}")]
+        public IActionResult Get(string sigla, int capitulo)
         {
             try
             {
-                return Ok(_service.BuscarCapitulos(livroId));
+                var domain = _service.BuscarVersosPorSiglaECapitulo(sigla, capitulo);
+                var vm = _mapper.Map<IEnumerable<Verso>, IEnumerable<CapituloViewModel>>(domain);
+                return Ok(vm);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                var domain = _service.ListarLivros();
+                var vm = _mapper.Map<IEnumerable<Livro>, IEnumerable<LivroViewModel>>(domain);
+                return Ok(vm);
             }
             catch (Exception ex)
             {
